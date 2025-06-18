@@ -1,9 +1,9 @@
 """Programa principal --> coordinar gestión de estudiantes"""
 
-# Importamos métodos de otros módulos
+# Importamos los métodos de otros módulos
 from estudiantes.gestion import añadir_estudiante, obtener_estudiantes
-from estudiantes.calculos import calcular_media, calcular_aprobado
-from utils.mensajes import mostrar_estudiante
+from estudiantes.calculos import calcular_media, calcular_aprobado, mostrar_resumen_global
+from utils.mensajes import mostrar_estudiante, mostrar_resumen_global
 
 # REGISTRO DE ESTUDIANTES
 total = int(input("Nº de Estudiantes: "))
@@ -25,10 +25,15 @@ for estudiante in range(total):
 
     añadir_estudiante(nombre, notas)
 
-# MUESTRA DE LOS RESULTADOS
+# MOSTRAR LOS ESTUDIANTES
 for estudiante in obtener_estudiantes():
     nombre = estudiante["nombre"]
     notas = estudiante["notas"]
     media = calcular_media(notas)
     estado = "Aprobado" if calcular_aprobado(media) else "Suspendido"
     mostrar_estudiante(nombre, notas, media, estado)
+
+# MOSTRAR EL RESUMEN GLOBAL
+estudiantes = obtener_estudiantes()
+num_total, num_aprobados, num_suspendidos, media_general = calcular_resumen(estudiantes)
+mostrar_resumen_global(num_total, num_aprobados, num_suspendidos, media_general)
