@@ -5,12 +5,27 @@ from estudiantes.gestion import añadir_estudiante, obtener_estudiantes
 from estudiantes.calculos import calcular_media, calcular_aprobado
 from utils.mensajes import mostrar_estudiante
 
-# Incluimos datos
-añadir_estudiante("Juan", [7.0, 8.5, 6.0])
-añadir_estudiante("Lucía", [5.0, 4.5, 6.0])
-añadir_estudiante("Mario", [9.0, 9.5, 10.0])
+# REGISTRO DE ESTUDIANTES
+total = int(input("Nº de Estudiantes: "))
 
-# Mostramos los resultados
+for estudiante in range(total):
+    # Usuario introduce el nombre del estudiante
+    nombre = input("Nombre del estudiante: ").strip()
+
+    notas = []
+
+    while True:
+        # Usuario introduce las 3 notas de ese estudiante
+        entrada = input(f"Notas de {nombre} (separadas por comas): ")
+
+        # Formateamos las notas
+        notas = [float(n.strip()) for n in entrada.split(",")]
+
+        break
+
+    añadir_estudiante(nombre, notas)
+
+# MUESTRA DE LOS RESULTADOS
 for estudiante in obtener_estudiantes():
     nombre = estudiante["nombre"]
     notas = estudiante["notas"]
