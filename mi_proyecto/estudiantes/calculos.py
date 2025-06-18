@@ -14,7 +14,7 @@ def calcular_aprobado(media):
     return media >= 5.0
 
 # Calculamos resumen global
-def calcular_resumen_global(num_total, num_aprobados, num_suspendidos, media_general):
+def calcular_resumen_global (num_total, num_aprobados, num_suspendidos, media_general):
     num_total = len(obtener_estudiantes)
     num_aprobados = 0
     suma_medias = 0.0

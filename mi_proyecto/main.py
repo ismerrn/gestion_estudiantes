@@ -2,7 +2,7 @@
 
 # Importamos los métodos de otros módulos
 from estudiantes.gestion import añadir_estudiante, obtener_estudiantes
-from estudiantes.calculos import calcular_media, calcular_aprobado, mostrar_resumen_global
+from estudiantes.calculos import calcular_media, calcular_aprobado, calcular_resumen_global
 from utils.mensajes import mostrar_estudiante, mostrar_resumen_global
 
 # REGISTRO DE ESTUDIANTES
@@ -35,5 +35,5 @@ for estudiante in obtener_estudiantes():
 
 # MOSTRAR EL RESUMEN GLOBAL
 estudiantes = obtener_estudiantes()
-num_total, num_aprobados, num_suspendidos, media_general = calcular_resumen(estudiantes)
+num_total, num_aprobados, num_suspendidos, media_general = calcular_resumen_global(estudiantes)
 mostrar_resumen_global(num_total, num_aprobados, num_suspendidos, media_general)
